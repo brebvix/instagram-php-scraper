@@ -17,10 +17,11 @@ class Story extends Media
      * for example - we do not need owner object inside story
      *
      * @param $value
-     * @param $prop
-     * @param $arr
+     * @param string $prop
+     * @param array $arr
+     * @return void
      */
-    protected function initPropertiesCustom($value, $prop, $arr)
+    protected function initPropertiesCustom($value, string $prop, array $arr): void
     {
         if (!empty($this->skip_prop[$prop])) {
             return;

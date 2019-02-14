@@ -6,7 +6,7 @@ namespace InstagramScraper\Model;
 class Like extends AbstractModel
 {
     /**
-     * @var
+     * @var int
      */
     protected $id;
 
@@ -16,17 +16,17 @@ class Like extends AbstractModel
     protected $username;
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getUserName()
+    public function getUserName(): string
     {
         return $this->username;
     }
@@ -39,10 +39,10 @@ class Like extends AbstractModel
     {
         switch ($prop) {
             case 'id':
-                $this->id = $value;
+                $this->id = (int) $value;
                 break;
             case 'username':
-                $this->username = $value;
+                $this->username = (string) $value;
                 break;
         }
     }

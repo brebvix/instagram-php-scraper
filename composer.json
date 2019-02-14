@@ -1,23 +1,23 @@
 {
-  "name": "raiym/instagram-php-scraper",
-  "description": "Instagram PHP Scraper. Get account information, photos and videos without any authorization",
+  "name": "brebvix/instagram-php-scraper",
+  "description": "Instagram PHP Scraper (7.2 Edition). Get account information, photos and videos without any authorization",
   "keywords": [
     "instagram",
     "scraper"
   ],
   "type": "library",
-  "homepage": "https://github.com/raiym/instagram-php-scraper",
+  "homepage": "https://github.com/brebvix/instagram-php-scraper",
   "license": "MIT",
   "authors": [
     {
-      "name": "raiym",
-      "email": "r.kapishev@gmail.com"
+      "name": "Nazar Gavaga",
+      "email": "mebow.software@gmail.com"
     }
   ],
   "require": {
-    "php": ">=5.4.0",
+    "php": ">=7.2.0",
     "mashape/unirest-php": "3.0.*",
-    "phpFastCache/phpFastCache": "5.0.*",
+    "phpFastCache/phpFastCache": "7.0.*",
     "ext-curl": "*",
     "ext-json": "*"
   },
@@ -30,6 +30,6 @@
     }
   },
   "support": {
-    "email": "r.kapishev@gmail.com"
+    "email": "mebow.software@gmail.com"
   }
 }

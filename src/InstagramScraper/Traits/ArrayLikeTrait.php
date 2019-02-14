@@ -21,18 +21,18 @@ trait ArrayLikeTrait
      *
      * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return $this->isMethod($offset, 'get') || \property_exists($this, $offset);
     }
 
     /**
-     * @param $method
-     * @param $case
+     * @param string $method
+     * @param string $case
      *
      * @return bool|string
      */
-    protected function isMethod($method, $case)
+    protected function isMethod(string $method, string $case)
     {
         $uMethod = $case . \ucfirst($method);
         if (\method_exists($this, $uMethod)) {
@@ -87,7 +87,7 @@ trait ArrayLikeTrait
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if ($run = $this->isMethod($offset, 'set')) {
             $this->run($run);
@@ -101,7 +101,7 @@ trait ArrayLikeTrait
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         if ($run = $this->isMethod($offset, 'unset')) {
             $this->run($run);

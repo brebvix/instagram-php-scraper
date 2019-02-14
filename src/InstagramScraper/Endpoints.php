@@ -44,80 +44,138 @@ class Endpoints
     /**
      * @param int $count
      */
-    public static function setAccountMediasRequestCount($count)
+    public static function setAccountMediasRequestCount(int $count): void
     {
         static::$requestMediaCount = $count;
     }
 
-    public static function getAccountMediasRequestCount()
+    /**
+     * @return int
+     */
+    public static function getAccountMediasRequestCount(): int
     {
         return static::$requestMediaCount;
     }
 
-    public static function getAccountPageLink($username)
+    /**
+     * @param string $username
+     * @return string
+     */
+    public static function getAccountPageLink(string $username): string
     {
         return str_replace('{username}', urlencode($username), static::ACCOUNT_PAGE);
     }
 
-    public static function getAccountJsonLink($username)
+    /**
+     * @param string $username
+     * @return string
+     */
+    public static function getAccountJsonLink(string $username): string
     {
         return str_replace('{username}', urlencode($username), static::ACCOUNT_JSON_INFO);
     }
 
-    public static function getAccountJsonInfoLinkByAccountId($id)
+    /**
+     * @param int $id
+     * @return string
+     */
+    public static function getAccountJsonInfoLinkByAccountId(int $id): string
     {
         return str_replace('{userId}', urlencode($id), static::ACCOUNT_JSON_INFO_BY_ID);
     }
 
-    public static function getAccountJsonPrivateInfoLinkByAccountId($id)
+    /**
+     * @param int $id
+     * @return string
+     */
+    public static function getAccountJsonPrivateInfoLinkByAccountId(int $id): string
     {
         return str_replace('{userId}', urlencode($id), static::ACCOUNT_JSON_PRIVATE_INFO_BY_ID);
     }
 
-    public static function getAccountMediasJsonLink($variables)
+    /**
+     * @param string $variables
+     * @return string
+     */
+    public static function getAccountMediasJsonLink(string $variables): string
     {
         return str_replace('{variables}', urlencode($variables), static::ACCOUNT_MEDIAS);
     }
 
-    public static function getMediaPageLink($code)
+    /**
+     * @param string $code
+     * @return string
+     */
+    public static function getMediaPageLink(string $code): string
     {
         return str_replace('{code}', urlencode($code), static::MEDIA_LINK);
     }
 
-    public static function getMediaJsonLink($code)
+    /**
+     * @param string $code
+     * @return string
+     */
+    public static function getMediaJsonLink(string $code): string
     {
         return str_replace('{code}', urlencode($code), static::MEDIA_JSON_INFO);
     }
 
-    public static function getMediasJsonByLocationIdLink($facebookLocationId, $maxId = '')
+    /**
+     * @param string $facebookLocationId
+     * @param string $maxId
+     * @return string
+     */
+    public static function getMediasJsonByLocationIdLink(string $facebookLocationId, string $maxId = ''): string
     {
         $url = str_replace('{{facebookLocationId}}', urlencode($facebookLocationId), static::MEDIA_JSON_BY_LOCATION_ID);
         return str_replace('{{maxId}}', urlencode($maxId), $url);
     }
 
-    public static function getMediasJsonByTagLink($tag, $maxId = '')
+    /**
+     * @param string $tag
+     * @param string $maxId
+     * @return string
+     */
+    public static function getMediasJsonByTagLink(string $tag, string $maxId = ''): string
     {
         $url = str_replace('{tag}', urlencode($tag), static::MEDIA_JSON_BY_TAG);
         return str_replace('{max_id}', urlencode($maxId), $url);
     }
 
-    public static function getGeneralSearchJsonLink($query)
+    /**
+     * @param string $query
+     * @return string
+     */
+    public static function getGeneralSearchJsonLink(string $query): string
     {
         return str_replace('{query}', urlencode($query), static::GENERAL_SEARCH);
     }
 
-    public static function getCommentsBeforeCommentIdByCode($variables)
+    /**
+     * @param string $variables
+     * @return string
+     */
+    public static function getCommentsBeforeCommentIdByCode(string $variables): string
     {
         return str_replace('{variables}', urlencode($variables), static::COMMENTS_BEFORE_COMMENT_ID_BY_CODE);
     }
 
-    public static function getLastLikesByCodeLink($code)
+    /**
+     * @param string $code
+     * @return string
+     */
+    public static function getLastLikesByCodeLink(string $code): string
     {
-        $url = str_replace('{{code}}', urlencode($code), static::LAST_LIKES_BY_CODE);
-        return $url;
+        return str_replace('{{code}}', urlencode($code), static::LAST_LIKES_BY_CODE);
     }
 
-    public static function getLastLikesByCode($code, $count, $lastLikeID)
+    /**
+     * @param string $code
+     * @param int $count
+     * @param string $lastLikeID
+     * @return string
+     */
+    public static function getLastLikesByCode(string $code, int $count, string $lastLikeID): string
     {
         $url = str_replace('{{shortcode}}', urlencode($code), static::LIKES_BY_SHORTCODE);
         $url = str_replace('{{count}}', urlencode($count), $url);
@@ -126,47 +184,65 @@ class Endpoints
         return $url;
     }
 
-    public static function getFollowUrl($accountId)
+    /**
+     * @param int $accountId
+     * @return string
+     */
+    public static function getFollowUrl(int $accountId): string
     {
-        $url = str_replace('{{accountId}}', urlencode($accountId), static::FOLLOW_URL);
-        return $url;
+        return str_replace('{{accountId}}', urlencode($accountId), static::FOLLOW_URL);
     }
 
-    public static function getFollowersJsonLink($accountId, $count, $after = '')
+    /**
+     * @param int $accountId
+     * @param int $count
+     * @param string $after
+     * @return string
+     */
+    public static function getFollowersJsonLink(int $accountId, int $count, string $after = ''): string
     {
         $url = str_replace('{{accountId}}', urlencode($accountId), static::FOLLOWERS_URL);
         $url = str_replace('{{count}}', urlencode($count), $url);
 
         if ($after === '') {
-            $url = str_replace('&after={{after}}', '', $url);
-        } else {
-            $url = str_replace('{{after}}', urlencode($after), $url);
+            return str_replace('&after={{after}}', '', $url);
         }
 
-        return $url;
+        return str_replace('{{after}}', urlencode($after), $url);
     }
 
-    public static function getFollowingJsonLink($accountId, $count, $after = '')
+    /**
+     * @param int $accountId
+     * @param int $count
+     * @param string $after
+     * @return string
+     */
+    public static function getFollowingJsonLink(int $accountId, int $count, string $after = ''): string
     {
         $url = str_replace('{{accountId}}', urlencode($accountId), static::FOLLOWING_URL);
         $url = str_replace('{{count}}', urlencode($count), $url);
 
         if ($after === '') {
-            $url = str_replace('&after={{after}}', '', $url);
-        } else {
-            $url = str_replace('{{after}}', urlencode($after), $url);
+            return str_replace('&after={{after}}', '', $url);
         }
 
-        return $url;
+        return str_replace('{{after}}', urlencode($after), $url);
     }
 
+    /**
+     * @return string
+     */
     public static function getUserStoriesLink()
     {
-        $url = self::getGraphQlUrl(InstagramQueryId::USER_STORIES, ['variables' => json_encode([])]);
-        return $url;
+        return self::getGraphQlUrl(InstagramQueryId::USER_STORIES, ['variables' => json_encode([])]);
     }
 
-    public static function getGraphQlUrl($queryId, $parameters)
+    /**
+     * @param int $queryId
+     * @param array $parameters
+     * @return string
+     */
+    public static function getGraphQlUrl(int $queryId, array $parameters): string
     {
         $url = str_replace('{{queryId}}', urlencode($queryId), static::GRAPH_QL_QUERY_URL);
         if (!empty($parameters)) {
@@ -176,28 +252,48 @@ class Endpoints
         return $url;
     }
 
-    public static function getStoriesLink($variables)
+    /**
+     * @param array $variables
+     * @return string
+     */
+    public static function getStoriesLink(array $variables): string
     {
-        $url = self::getGraphQlUrl(InstagramQueryId::STORIES, ['variables' => json_encode($variables)]);
-        return $url;
+        return self::getGraphQlUrl(InstagramQueryId::STORIES, ['variables' => json_encode($variables)]);
     }
 
-    public static function getLikeUrl($mediaId) 
+    /**
+     * @param int $mediaId
+     * @return string
+     */
+    public static function getLikeUrl(int $mediaId): string
     {
         return str_replace('{mediaId}', urlencode($mediaId), static::LIKE_URL);
     }
 
-    public static function getUnlikeUrl($mediaId) 
+    /**
+     * @param int $mediaId
+     * @return string
+     */
+    public static function getUnlikeUrl(int $mediaId): string
     {
         return str_replace('{mediaId}', urlencode($mediaId), static::UNLIKE_URL);
     }
 
-    public static function getAddCommentUrl($mediaId)
+    /**
+     * @param int $mediaId
+     * @return string
+     */
+    public static function getAddCommentUrl(int $mediaId): string
     {
         return str_replace('{mediaId}', $mediaId, static::ADD_COMMENT_URL);
     }
 
-    public static function getDeleteCommentUrl($mediaId, $commentId)
+    /**
+     * @param int $mediaId
+     * @param int $commentId
+     * @return string
+     */
+    public static function getDeleteCommentUrl(int $mediaId, int $commentId): string
     {
         $url = str_replace('{mediaId}', $mediaId, static::DELETE_COMMENT_URL);
         $url = str_replace('{commentId}', $commentId, $url);

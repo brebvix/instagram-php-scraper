@@ -49,7 +49,7 @@ class CarouselMedia
     private $videoLowBandwidthUrl;
 
     /**
-     * @var
+     * @var int
      */
     private $videoViews;
 
@@ -62,171 +62,171 @@ class CarouselMedia
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
 
     /**
-     * @param mixed $type
+     * @param string $type
      *
-     * @return $this
+     * @return CarouselMedia
      */
-    public function setType($type)
+    public function setType(string $type): CarouselMedia
     {
         $this->type = $type;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getImageLowResolutionUrl()
+    public function getImageLowResolutionUrl(): string
     {
         return $this->imageLowResolutionUrl;
     }
 
     /**
-     * @param mixed $imageLowResolutionUrl
+     * @param string $imageLowResolutionUrl
      *
      * @return CarouselMedia
      */
-    public function setImageLowResolutionUrl($imageLowResolutionUrl)
+    public function setImageLowResolutionUrl(string $imageLowResolutionUrl): CarouselMedia
     {
         $this->imageLowResolutionUrl = $imageLowResolutionUrl;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getImageThumbnailUrl()
+    public function getImageThumbnailUrl(): string
     {
         return $this->imageThumbnailUrl;
     }
 
     /**
-     * @param mixed $imageThumbnailUrl
+     * @param string $imageThumbnailUrl
      *
      * @return CarouselMedia
      */
-    public function setImageThumbnailUrl($imageThumbnailUrl)
+    public function setImageThumbnailUrl(string $imageThumbnailUrl): CarouselMedia
     {
         $this->imageThumbnailUrl = $imageThumbnailUrl;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getImageStandardResolutionUrl()
+    public function getImageStandardResolutionUrl(): string
     {
         return $this->imageStandardResolutionUrl;
     }
 
     /**
-     * @param mixed $imageStandardResolutionUrl
+     * @param string $imageStandardResolutionUrl
      *
      * @return CarouselMedia
      */
-    public function setImageStandardResolutionUrl($imageStandardResolutionUrl)
+    public function setImageStandardResolutionUrl(string $imageStandardResolutionUrl): CarouselMedia
     {
         $this->imageStandardResolutionUrl = $imageStandardResolutionUrl;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getImageHighResolutionUrl()
+    public function getImageHighResolutionUrl(): string
     {
         return $this->imageHighResolutionUrl;
     }
 
     /**
-     * @param mixed $imageHighResolutionUrl
+     * @param string $imageHighResolutionUrl
      *
      * @return CarouselMedia
      */
-    public function setImageHighResolutionUrl($imageHighResolutionUrl)
+    public function setImageHighResolutionUrl(string $imageHighResolutionUrl): CarouselMedia
     {
         $this->imageHighResolutionUrl = $imageHighResolutionUrl;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getVideoLowResolutionUrl()
+    public function getVideoLowResolutionUrl(): string
     {
         return $this->videoLowResolutionUrl;
     }
 
     /**
-     * @param mixed $videoLowResolutionUrl
+     * @param string $videoLowResolutionUrl
      *
      * @return CarouselMedia
      */
-    public function setVideoLowResolutionUrl($videoLowResolutionUrl)
+    public function setVideoLowResolutionUrl(string $videoLowResolutionUrl): CarouselMedia
     {
         $this->videoLowResolutionUrl = $videoLowResolutionUrl;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getVideoStandardResolutionUrl()
+    public function getVideoStandardResolutionUrl(): string
     {
         return $this->videoStandardResolutionUrl;
     }
 
     /**
-     * @param mixed $videoStandardResolutionUrl
+     * @param string $videoStandardResolutionUrl
      *
      * @return CarouselMedia
      */
-    public function setVideoStandardResolutionUrl($videoStandardResolutionUrl)
+    public function setVideoStandardResolutionUrl(string $videoStandardResolutionUrl): CarouselMedia
     {
         $this->videoStandardResolutionUrl = $videoStandardResolutionUrl;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getVideoLowBandwidthUrl()
+    public function getVideoLowBandwidthUrl(): string
     {
         return $this->videoLowBandwidthUrl;
     }
 
     /**
-     * @param mixed $videoLowBandwidthUrl
+     * @param string $videoLowBandwidthUrl
      *
      * @return CarouselMedia
      */
-    public function setVideoLowBandwidthUrl($videoLowBandwidthUrl)
+    public function setVideoLowBandwidthUrl(string $videoLowBandwidthUrl): CarouselMedia
     {
         $this->videoLowBandwidthUrl = $videoLowBandwidthUrl;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getVideoViews()
+    public function getVideoViews(): int
     {
         return $this->videoViews;
     }
 
     /**
-     * @param mixed $videoViews
+     * @param int $videoViews
      *
      * @return CarouselMedia
      */
-    public function setVideoViews($videoViews)
+    public function setVideoViews(int $videoViews): CarouselMedia
     {
         $this->videoViews = $videoViews;
         return $this;

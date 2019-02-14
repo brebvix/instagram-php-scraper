@@ -18,11 +18,11 @@ class Location extends AbstractModel
         'modified' => 'modified'
     ];
     /**
-     * @var
+     * @var int
      */
     protected $id;
     /**
-     * @var
+     * @var bool
      */
     protected $hasPublicPage;
     /**
@@ -47,14 +47,14 @@ class Location extends AbstractModel
     protected $isLoaded = false;
 
     /**
-     * @var 
+     * @var
      */
     protected $modified;
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -62,7 +62,7 @@ class Location extends AbstractModel
     /**
      * @return mixed
      */
-    public function getHasPublicPage()
+    public function getHasPublicPage(): bool
     {
         return $this->hasPublicPage;
     }

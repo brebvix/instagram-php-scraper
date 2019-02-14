@@ -21,7 +21,7 @@ abstract class AbstractModel implements \ArrayAccess
     /**
      * @return array
      */
-    public static function getColumns()
+    public static function getColumns(): array
     {
         return \array_keys(static::$initPropertiesMap);
     }

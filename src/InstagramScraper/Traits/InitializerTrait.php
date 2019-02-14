@@ -52,6 +52,7 @@ trait InitializerTrait
 
     /**
      * @param array $props
+     * @return void
      */
     protected function __construct(array $props = null)
     {
@@ -68,7 +69,7 @@ trait InitializerTrait
     }
 
     /**
-     * @return $this
+     * @return InitializerTrait
      */
     protected function beforeInit()
     {
@@ -76,7 +77,7 @@ trait InitializerTrait
     }
 
     /**
-     * @return $this
+     * @return InitializerTrait
      */
     final protected function initAuto()
     {
@@ -96,7 +97,7 @@ trait InitializerTrait
     }
 
     /**
-     * @return $this
+     * @return InitializerTrait
      */
     protected function initDefaults()
     {
@@ -106,7 +107,7 @@ trait InitializerTrait
     /**
      * @param array $props
      *
-     * @return $this
+     * @return InitializerTrait
      */
     final protected function init(array $props)
     {
@@ -141,7 +142,7 @@ trait InitializerTrait
     }
 
     /**
-     * @return $this
+     * @return InitializerTrait
      */
     protected function afterInit()
     {
@@ -149,7 +150,7 @@ trait InitializerTrait
     }
 
     /**
-     * @return $this
+     * @return InitializerTrait
      */
     public static function fake()
     {
@@ -159,9 +160,9 @@ trait InitializerTrait
     /**
      * @param bool $value
      *
-     * @return $this
+     * @return InitializerTrait
      */
-    protected function setFake($value = true)
+    protected function setFake(bool $value = true)
     {
         $this->isFake = (bool)$value;
 
@@ -181,7 +182,7 @@ trait InitializerTrait
     /**
      * @return bool
      */
-    public function isNotEmpty()
+    public function isNotEmpty(): bool
     {
         return !$this->isLoadEmpty;
     }
@@ -189,7 +190,7 @@ trait InitializerTrait
     /**
      * @return bool
      */
-    public function isFake()
+    public function isFake(): bool
     {
         return $this->isFake;
     }
@@ -197,7 +198,7 @@ trait InitializerTrait
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         $ret = [];
         $map = static::$initPropertiesMap;
@@ -219,7 +220,7 @@ trait InitializerTrait
     /**
      * @param $datetime
      *
-     * @return $this
+     * @return InitializerTrait
      */
     protected function initModified($datetime)
     {
@@ -232,9 +233,9 @@ trait InitializerTrait
      * @param string $date
      * @param string $key
      *
-     * @return $this
+     * @return InitializerTrait
      */
-    protected function initDatetime($date, $key)
+    protected function initDatetime(string $date, string $key)
     {
         return $this->initProperty(\strtotime($date), $key);
     }
@@ -243,7 +244,7 @@ trait InitializerTrait
      * @param $value
      * @param $key
      *
-     * @return $this
+     * @return InitializerTrait
      */
     protected function initProperty($value, $key)
     {
@@ -268,9 +269,9 @@ trait InitializerTrait
      * @param mixed $value
      * @param string $key
      *
-     * @return $this
+     * @return InitializerTrait
      */
-    protected function initBool($value, $key)
+    protected function initBool($value, string $key)
     {
         return $this->initProperty(!empty($value), "is{$key}", $key);
     }
@@ -279,9 +280,9 @@ trait InitializerTrait
      * @param mixed $value
      * @param string $key
      *
-     * @return $this
+     * @return InitializerTrait
      */
-    protected function initInt($value, $key)
+    protected function initInt($value, string $key)
     {
         return $this->initProperty((int)$value, $key);
     }
@@ -290,9 +291,9 @@ trait InitializerTrait
      * @param mixed $value
      * @param string $key
      *
-     * @return $this
+     * @return InitializerTrait
      */
-    protected function initFloat($value, $key)
+    protected function initFloat($value, string $key)
     {
         return $this->initProperty((float)$value, $key);
     }
@@ -301,9 +302,9 @@ trait InitializerTrait
      * @param string $rawData
      * @param string $key
      *
-     * @return $this
+     * @return InitializerTrait
      */
-    protected function initJsonArray($rawData, $key)
+    protected function initJsonArray(string $rawData, string $key)
     {
         $value = \json_decode($rawData, true, 512, JSON_BIGINT_AS_STRING);
         if (empty($value)) {
@@ -324,9 +325,9 @@ trait InitializerTrait
      * @param mixed $value
      * @param string $key
      *
-     * @return $this
+     * @return InitializerTrait
      */
-    protected function initExplode($value, $key)
+    protected function initExplode($value, string $key)
     {
         return $this->initProperty(\explode(',', $value), "is{$key}", $key);
     }

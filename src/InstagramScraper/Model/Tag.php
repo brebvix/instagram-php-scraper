@@ -32,7 +32,7 @@ class Tag extends AbstractModel
     /**
      * @return int
      */
-    public function getMediaCount()
+    public function getMediaCount(): int
     {
         return $this->mediaCount;
     }
@@ -40,7 +40,7 @@ class Tag extends AbstractModel
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -48,7 +48,7 @@ class Tag extends AbstractModel
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }

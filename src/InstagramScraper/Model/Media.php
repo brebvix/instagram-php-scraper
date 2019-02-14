@@ -165,7 +165,7 @@ class Media extends AbstractModel
      *
      * @return int
      */
-    public static function getIdFromCode($code)
+    public static function getIdFromCode(string $code): int
     {
         $alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
         $id = 0;
@@ -179,9 +179,9 @@ class Media extends AbstractModel
     /**
      * @param string $id
      *
-     * @return mixed
+     * @return string
      */
-    public static function getLinkFromId($id)
+    public static function getLinkFromId(string $id): string
     {
         $code = Media::getCodeFromId($id);
         return Endpoints::getMediaPageLink($code);
@@ -192,7 +192,7 @@ class Media extends AbstractModel
      *
      * @return string
      */
-    public static function getCodeFromId($id)
+    public static function getCodeFromId(string $id): String
     {
         $parts = explode('_', $id);
         $id = $parts[0];
@@ -207,9 +207,9 @@ class Media extends AbstractModel
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
@@ -217,7 +217,7 @@ class Media extends AbstractModel
     /**
      * @return string
      */
-    public function getShortCode()
+    public function getShortCode(): string
     {
         return $this->shortCode;
     }
@@ -225,7 +225,7 @@ class Media extends AbstractModel
     /**
      * @return int
      */
-    public function getCreatedTime()
+    public function getCreatedTime(): int
     {
         return $this->createdTime;
     }
@@ -233,7 +233,7 @@ class Media extends AbstractModel
     /**
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -241,7 +241,7 @@ class Media extends AbstractModel
     /**
      * @return string
      */
-    public function getLink()
+    public function getLink(): string
     {
         return $this->link;
     }
@@ -249,7 +249,7 @@ class Media extends AbstractModel
     /**
      * @return string
      */
-    public function getImageLowResolutionUrl()
+    public function getImageLowResolutionUrl(): string
     {
         return $this->imageLowResolutionUrl;
     }
@@ -257,7 +257,7 @@ class Media extends AbstractModel
     /**
      * @return string
      */
-    public function getImageThumbnailUrl()
+    public function getImageThumbnailUrl(): string
     {
         return $this->imageThumbnailUrl;
     }
@@ -265,7 +265,7 @@ class Media extends AbstractModel
     /**
      * @return string
      */
-    public function getImageStandardResolutionUrl()
+    public function getImageStandardResolutionUrl(): string
     {
         return $this->imageStandardResolutionUrl;
     }
@@ -273,7 +273,7 @@ class Media extends AbstractModel
     /**
      * @return string
      */
-    public function getImageHighResolutionUrl()
+    public function getImageHighResolutionUrl(): string
     {
         return $this->imageHighResolutionUrl;
     }
@@ -282,7 +282,7 @@ class Media extends AbstractModel
     /**
      * @return array
      */
-    public function getSquareImages()
+    public function getSquareImages(): array
     {
         return $this->squareImages;
     }
@@ -291,7 +291,7 @@ class Media extends AbstractModel
     /**
      * @return array
      */
-    public function getCarouselMedia()
+    public function getCarouselMedia(): array
     {
         return $this->carouselMedia;
     }
@@ -299,7 +299,7 @@ class Media extends AbstractModel
     /**
      * @return string
      */
-    public function getCaption()
+    public function getCaption(): string
     {
         return $this->caption;
     }
@@ -307,7 +307,7 @@ class Media extends AbstractModel
     /**
      * @return bool
      */
-    public function isCaptionEdited()
+    public function isCaptionEdited(): bool
     {
         return $this->isCaptionEdited;
     }
@@ -315,7 +315,7 @@ class Media extends AbstractModel
     /**
      * @return bool
      */
-    public function isAd()
+    public function isAd(): bool
     {
         return $this->isAd;
     }
@@ -323,7 +323,7 @@ class Media extends AbstractModel
     /**
      * @return string
      */
-    public function getVideoLowResolutionUrl()
+    public function getVideoLowResolutionUrl(): string
     {
         return $this->videoLowResolutionUrl;
     }
@@ -331,7 +331,7 @@ class Media extends AbstractModel
     /**
      * @return string
      */
-    public function getVideoStandardResolutionUrl()
+    public function getVideoStandardResolutionUrl(): string
     {
         return $this->videoStandardResolutionUrl;
     }
@@ -339,7 +339,7 @@ class Media extends AbstractModel
     /**
      * @return string
      */
-    public function getVideoLowBandwidthUrl()
+    public function getVideoLowBandwidthUrl(): string
     {
         return $this->videoLowBandwidthUrl;
     }
@@ -347,7 +347,7 @@ class Media extends AbstractModel
     /**
      * @return int
      */
-    public function getVideoViews()
+    public function getVideoViews(): int
     {
         return $this->videoViews;
     }
@@ -355,7 +355,7 @@ class Media extends AbstractModel
     /**
      * @return int
      */
-    public function getOwnerId()
+    public function getOwnerId(): int
     {
         return $this->ownerId;
     }
@@ -363,7 +363,7 @@ class Media extends AbstractModel
     /**
      * @return int
      */
-    public function getLikesCount()
+    public function getLikesCount(): int
     {
         return $this->likesCount;
     }
@@ -379,7 +379,7 @@ class Media extends AbstractModel
     /**
      * @return string
      */
-    public function getLocationName()
+    public function getLocationName(): string
     {
         return $this->locationName;
     }
@@ -387,7 +387,7 @@ class Media extends AbstractModel
     /**
      * @return string
      */
-    public function getCommentsCount()
+    public function getCommentsCount(): string
     {
         return $this->commentsCount;
     }
@@ -395,7 +395,7 @@ class Media extends AbstractModel
     /**
      * @return Comment[]
      */
-    public function getComments()
+    public function getComments(): array
     {
         return $this->comments;
     }
@@ -403,7 +403,7 @@ class Media extends AbstractModel
     /**
      * @return bool
      */
-    public function hasMoreComments()
+    public function hasMoreComments(): bool
     {
         return $this->hasMoreComments;
     }
@@ -411,7 +411,7 @@ class Media extends AbstractModel
     /**
      * @return string
      */
-    public function getCommentsNextPage()
+    public function getCommentsNextPage(): string
     {
         return $this->commentsNextPage;
     }
@@ -419,7 +419,7 @@ class Media extends AbstractModel
     /**
      * @return Media[]|array
      */
-    public function getSidecarMedias()
+    public function getSidecarMedias(): array
     {
         return $this->sidecarMedias;
     }
@@ -427,7 +427,7 @@ class Media extends AbstractModel
     /**
      * @return string
      */
-    public function getLocationSlug()
+    public function getLocationSlug(): string
     {
         return $this->locationSlug;
     }
@@ -435,8 +435,11 @@ class Media extends AbstractModel
     /**
      * @param $value
      * @param $prop
+     * @param $arr
+     *
+     * @return void
      */
-    protected function initPropertiesCustom($value, $prop, $arr)
+    protected function initPropertiesCustom($value, string $prop, array $arr): void
     {
         switch ($prop) {
             case 'id':
@@ -559,7 +562,7 @@ class Media extends AbstractModel
                 break;
             case 'edge_media_to_comment':
                 if (isset($arr[$prop]['count'])) {
-                    $this->commentsCount = (int) $arr[$prop]['count'];
+                    $this->commentsCount = (int)$arr[$prop]['count'];
                 }
                 if (isset($arr[$prop]['edges']) && is_array($arr[$prop]['edges'])) {
                     foreach ($arr[$prop]['edges'] as $commentData) {
@@ -567,10 +570,10 @@ class Media extends AbstractModel
                     }
                 }
                 if (isset($arr[$prop]['page_info']['has_next_page'])) {
-                    $this->hasMoreComments = (bool) $arr[$prop]['page_info']['has_next_page'];
+                    $this->hasMoreComments = (bool)$arr[$prop]['page_info']['has_next_page'];
                 }
                 if (isset($arr[$prop]['page_info']['end_cursor'])) {
-                    $this->commentsNextPage = (string) $arr[$prop]['page_info']['end_cursor'];
+                    $this->commentsNextPage = (string)$arr[$prop]['page_info']['end_cursor'];
                 }
                 break;
             case 'edge_media_preview_like':
@@ -623,13 +626,13 @@ class Media extends AbstractModel
     }
 
     /**
-     * @param $mediaArray
-     * @param $carouselArray
-     * @param $instance
+     * @param array $mediaArray
+     * @param array $carouselArray
+     * @param Media $instance
      *
-     * @return mixed
+     * @return array
      */
-    private static function setCarouselMedia($mediaArray, $carouselArray, $instance)
+    private static function setCarouselMedia(array $mediaArray, array $carouselArray, Media $instance): array
     {
         $carouselMedia = new CarouselMedia();
         $carouselMedia->setType($carouselArray['type']);
@@ -661,7 +664,7 @@ class Media extends AbstractModel
      *
      * @return array
      */
-    private static function getImageUrls($imageUrl)
+    private static function getImageUrls(string $imageUrl): array
     {
         $parts = explode('/', parse_url($imageUrl)['path']);
         $imageName = $parts[sizeof($parts) - 1];
@@ -677,7 +680,7 @@ class Media extends AbstractModel
     /**
      * @return Account
      */
-    public function getOwner()
+    public function getOwner(): Account
     {
         return $this->owner;
     }

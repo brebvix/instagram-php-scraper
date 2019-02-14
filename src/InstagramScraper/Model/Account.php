@@ -173,7 +173,7 @@ class Account extends AbstractModel
     /**
      * @return bool
      */
-    public function isLoaded()
+    public function isLoaded(): bool
     {
         return $this->isLoaded;
     }
@@ -181,7 +181,7 @@ class Account extends AbstractModel
     /**
      * @return string
      */
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->username;
     }
@@ -189,7 +189,7 @@ class Account extends AbstractModel
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         if (PHP_INT_SIZE > 4) {
             $this->id = (int)$this->id;
@@ -201,7 +201,7 @@ class Account extends AbstractModel
     /**
      * @return string
      */
-    public function getFullName()
+    public function getFullName(): string
     {
         return $this->fullName;
     }
@@ -209,7 +209,7 @@ class Account extends AbstractModel
     /**
      * @return string
      */
-    public function getProfilePicUrl()
+    public function getProfilePicUrl(): string
     {
         return $this->profilePicUrl;
     }
@@ -217,7 +217,7 @@ class Account extends AbstractModel
     /**
      * @return string
      */
-    public function getProfilePicUrlHd()
+    public function getProfilePicUrlHd(): string
     {
         $toReturn = $this->profilePicUrl;
 
@@ -231,7 +231,7 @@ class Account extends AbstractModel
     /**
      * @return string
      */
-    public function getBiography()
+    public function getBiography(): string
     {
         return $this->biography;
     }
@@ -239,7 +239,7 @@ class Account extends AbstractModel
     /**
      * @return string
      */
-    public function getExternalUrl()
+    public function getExternalUrl(): string
     {
         return $this->externalUrl;
     }
@@ -247,7 +247,7 @@ class Account extends AbstractModel
     /**
      * @return int
      */
-    public function getFollowsCount()
+    public function getFollowsCount(): int
     {
         return $this->followsCount;
     }
@@ -255,7 +255,7 @@ class Account extends AbstractModel
     /**
      * @return int
      */
-    public function getFollowedByCount()
+    public function getFollowedByCount(): int
     {
         return $this->followedByCount;
     }
@@ -263,7 +263,7 @@ class Account extends AbstractModel
     /**
      * @return int
      */
-    public function getMediaCount()
+    public function getMediaCount(): int
     {
         return $this->mediaCount;
     }
@@ -271,7 +271,7 @@ class Account extends AbstractModel
     /**
      * @return bool
      */
-    public function isPrivate()
+    public function isPrivate(): bool
     {
         return $this->isPrivate;
     }
@@ -279,7 +279,7 @@ class Account extends AbstractModel
     /**
      * @return bool
      */
-    public function isVerified()
+    public function isVerified(): bool
     {
         return $this->isVerified;
     }
@@ -287,26 +287,15 @@ class Account extends AbstractModel
     /**
      * @return Media[]
      */
-    public function getMedias()
+    public function getMedias(): array
     {
         return $this->medias;
     }
 
     /**
-     * @param Media $media
-     * @return Account
-     */
-    public function addMedia(Media $media)
-    {
-        $this->medias[] = $media;
-
-        return $this;
-    }
-
-    /**
      * @return bool
      */
-    public function isBlockedByViewer()
+    public function isBlockedByViewer(): bool
     {
         return $this->blockedByViewer;
     }
@@ -314,7 +303,7 @@ class Account extends AbstractModel
     /**
      * @return bool
      */
-    public function isCountryBlock()
+    public function isCountryBlock(): bool
     {
         return $this->countryBlock;
     }
@@ -322,7 +311,7 @@ class Account extends AbstractModel
     /**
      * @return bool
      */
-    public function isFollowedByViewer()
+    public function isFollowedByViewer(): bool
     {
         return $this->followedByViewer;
     }
@@ -330,7 +319,7 @@ class Account extends AbstractModel
     /**
      * @return bool
      */
-    public function isFollowsViewer()
+    public function isFollowsViewer(): bool
     {
         return $this->followsViewer;
     }
@@ -338,7 +327,7 @@ class Account extends AbstractModel
     /**
      * @return bool
      */
-    public function isHasChannel()
+    public function isHasChannel(): bool
     {
         return $this->hasChannel;
     }
@@ -346,7 +335,7 @@ class Account extends AbstractModel
     /**
      * @return bool
      */
-    public function isHasBlockedViewer()
+    public function isHasBlockedViewer(): bool
     {
         return $this->hasBlockedViewer;
     }
@@ -354,7 +343,7 @@ class Account extends AbstractModel
     /**
      * @return int
      */
-    public function getHighlightReelCount()
+    public function getHighlightReelCount(): int
     {
         return $this->highlightReelCount;
     }
@@ -362,7 +351,7 @@ class Account extends AbstractModel
     /**
      * @return bool
      */
-    public function isHasRequestedViewer()
+    public function isHasRequestedViewer(): bool
     {
         return $this->hasRequestedViewer;
     }
@@ -370,7 +359,7 @@ class Account extends AbstractModel
     /**
      * @return bool
      */
-    public function isBusinessAccount()
+    public function isBusinessAccount(): bool
     {
         return $this->isBusinessAccount;
     }
@@ -378,7 +367,7 @@ class Account extends AbstractModel
     /**
      * @return bool
      */
-    public function isJoinedRecently()
+    public function isJoinedRecently(): bool
     {
         return $this->isJoinedRecently;
     }
@@ -386,7 +375,7 @@ class Account extends AbstractModel
     /**
      * @return string
      */
-    public function getBusinessCategoryName()
+    public function getBusinessCategoryName(): string
     {
         return $this->businessCategoryName;
     }
@@ -394,7 +383,7 @@ class Account extends AbstractModel
     /**
      * @return string
      */
-    public function getBusinessEmail()
+    public function getBusinessEmail(): string
     {
         return $this->businessEmail;
     }
@@ -402,7 +391,7 @@ class Account extends AbstractModel
     /**
      * @return string
      */
-    public function getBusinessPhoneNumber()
+    public function getBusinessPhoneNumber(): string
     {
         return $this->businessPhoneNumber;
     }
@@ -410,7 +399,7 @@ class Account extends AbstractModel
     /**
      * @return string
      */
-    public function getBusinessAddressJson()
+    public function getBusinessAddressJson(): string
     {
         return $this->businessAddressJson;
     }
@@ -418,7 +407,7 @@ class Account extends AbstractModel
     /**
      * @return bool
      */
-    public function isRequestedByViewer()
+    public function isRequestedByViewer(): bool
     {
         return $this->requestedByViewer;
     }
@@ -426,17 +415,19 @@ class Account extends AbstractModel
     /**
      * @return string
      */
-    public function getConnectedFbPage()
+    public function getConnectedFbPage(): string
     {
         return $this->connectedFbPage;
     }
 
     /**
      * @param $value
-     * @param $prop
-     * @param $array
+     * @param string $prop
+     * @param array $array
+     *
+     * @return void
      */
-    protected function initPropertiesCustom($value, $prop, $array)
+    protected function initPropertiesCustom($value, string $prop, array $array): void
     {
         switch ($prop) {
             case 'id':
@@ -529,8 +520,9 @@ class Account extends AbstractModel
 
     /**
      * @param array $array
+     * @return void
      */
-    protected function initMedia($array)
+    protected function initMedia(array $array): void
     {
         $this->mediaCount = !empty($array['count']) ? $array['count'] : 0;
         if (!$this->mediaCount || !isset($array['edges']) || !is_array($array['edges'])) {
@@ -544,5 +536,16 @@ class Account extends AbstractModel
                 $this->addMedia($media);
             }
         }
+    }
+
+    /**
+     * @param Media $media
+     * @return Account
+     */
+    public function addMedia(Media $media): Account
+    {
+        $this->medias[] = $media;
+
+        return $this;
     }
 }

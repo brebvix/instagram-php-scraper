@@ -6,17 +6,17 @@ namespace InstagramScraper\Model;
 class Comment extends AbstractModel
 {
     /**
-     * @var
+     * @var int
      */
     protected $id;
 
     /**
-     * @var
+     * @var string
      */
     protected $text;
 
     /**
-     * @var
+     * @var string
      */
     protected $createdAt;
 
@@ -31,25 +31,25 @@ class Comment extends AbstractModel
     protected $isLoaded = false;
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getText()
+    public function getText(): string
     {
         return $this->text;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): string
     {
         return $this->createdAt;
     }
@@ -57,7 +57,7 @@ class Comment extends AbstractModel
     /**
      * @return Account
      */
-    public function getOwner()
+    public function getOwner(): Account
     {
         return $this->owner;
     }
@@ -70,13 +70,13 @@ class Comment extends AbstractModel
     {
         switch ($prop) {
             case 'id':
-                $this->id = $value;
+                $this->id = (int) $value;
                 break;
             case 'created_at':
-                $this->createdAt = $value;
+                $this->createdAt = (string) $value;
                 break;
             case 'text':
-                $this->text = $value;
+                $this->text = (string) $value;
                 break;
             case 'owner':
                 $this->owner = Account::create($value);

@@ -12,30 +12,45 @@ class UserStories extends AbstractModel
     protected $owner;
 
     /** @var  Story[] */
-    protected $stories;
+    protected $stories = [];
 
-    public function setOwner($owner)
-    {
-        $this->owner = $owner;
-    }
-
-    public function getOwner()
+    /**
+     * @return Account
+     */
+    public function getOwner(): Account
     {
         return $this->owner;
     }
 
-    public function addStory($story)
+    /**
+     * @param Account $owner
+     */
+    public function setOwner(Account $owner): void
+    {
+        $this->owner = $owner;
+    }
+
+    /**
+     * @param Story $story
+     */
+    public function addStory(Story $story): void
     {
         $this->stories[] = $story;
     }
 
-    public function setStories($stories)
-    {
-        $this->stories = $stories;
-    }
-
-    public function getStories()
+    /**
+     * @return Story[]
+     */
+    public function getStories(): array
     {
         return $this->stories;
+    }
+
+    /**
+     * @param Story[] $stories
+     */
+    public function setStories(array $stories): void
+    {
+        $this->stories = $stories;
     }
 }
