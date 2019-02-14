@@ -14,8 +14,14 @@ use InstagramScraper\Model\Story;
 use InstagramScraper\Model\Tag;
 use InstagramScraper\Model\UserStories;
 use InvalidArgumentException;
-use phpFastCache\Cache\ExtendedCacheItemPoolInterface;
-use phpFastCache\CacheManager;
+use Phpfastcache\Config\ConfigurationOption;
+use Phpfastcache\Core\Pool\ExtendedCacheItemPoolInterface;
+use Phpfastcache\CacheManager;
+use Phpfastcache\Exceptions\PhpfastcacheDriverCheckException;
+use Phpfastcache\Exceptions\PhpfastcacheDriverException;
+use Phpfastcache\Exceptions\PhpfastcacheDriverNotFoundException;
+use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
+use Phpfastcache\Exceptions\PhpfastcacheInvalidConfigurationException;
 use Unirest\Request;
 use Unirest\Response;
 
@@ -50,7 +56,13 @@ class Instagram
      * @param null $sessionFolder
      *
      * @return Instagram
-     * @throws \phpFastCache\Exceptions\phpFastCacheDriverCheckException
+     * @throws PhpfastcacheDriverCheckException
+     * @throws PhpfastcacheInvalidConfigurationException
+     * @throws PhpfastcacheDriverNotFoundException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PhpfastcacheDriverException
+     * @throws PhpfastcacheInvalidConfigurationException
+     * @throws \ReflectionException
      */
     public static function withCredentials(string $username, string $password, $sessionFolder = null): Instagram
     {
@@ -58,10 +70,12 @@ class Instagram
             $sessionFolder = __DIR__ . DIRECTORY_SEPARATOR . 'sessions' . DIRECTORY_SEPARATOR;
         }
         if (is_string($sessionFolder)) {
-            CacheManager::setDefaultConfig([
-                'path' => $sessionFolder,
-                'ignoreSymfonyNotice' => true,
-            ]);
+            $configureOptions = new ConfigurationOption();
+            $defaultConfig = $configureOptions
+                ->setPath($sessionFolder)
+                ->setIgnoreSymfonyNotice(true);
+
+            CacheManager::setDefaultConfig($defaultConfig);
             static::$instanceCache = CacheManager::getInstance('files');
         } else {
             static::$instanceCache = $sessionFolder;
@@ -81,7 +95,6 @@ class Instagram
      */
     public static function searchTagsByTagName(string $tag): array
     {
-        // TODO: Add tests and auth
         $response = Request::get(Endpoints::getGeneralSearchJsonLink($tag));
 
         if (static::HTTP_NOT_FOUND === $response->code) {
@@ -1208,6 +1221,7 @@ class Instagram
      *
      * @throws InstagramAuthException
      * @throws InstagramException
+     * @throws PhpfastcacheInvalidArgumentException
      *
      * @return array
      */
@@ -1438,6 +1452,7 @@ class Instagram
 
     /**
      * @return void
+     * @throws PhpfastcacheInvalidArgumentException
      */
     public function saveSession(): void
     {
