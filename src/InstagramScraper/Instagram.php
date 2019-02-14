@@ -14,9 +14,9 @@ use InstagramScraper\Model\Story;
 use InstagramScraper\Model\Tag;
 use InstagramScraper\Model\UserStories;
 use InvalidArgumentException;
+use Phpfastcache\CacheManager;
 use Phpfastcache\Config\ConfigurationOption;
 use Phpfastcache\Core\Pool\ExtendedCacheItemPoolInterface;
-use Phpfastcache\CacheManager;
 use Phpfastcache\Exceptions\PhpfastcacheDriverCheckException;
 use Phpfastcache\Exceptions\PhpfastcacheDriverException;
 use Phpfastcache\Exceptions\PhpfastcacheDriverNotFoundException;
@@ -411,6 +411,33 @@ class Instagram
             $isMoreAvailable = $arr['data']['user']['edge_owner_to_timeline_media']['page_info']['has_next_page'];
         }
         return $medias;
+    }
+
+    /**
+     * @param string $mediaId
+     * @return Account[]
+     * @throws InstagramException
+     */
+    public function getLikersByMediaId(string $mediaId): array
+    {
+        $response = Request::get(Endpoints::getMediaLikersJsonLink($mediaId), $this->generateHeaders($this->userSession));
+        if (static::HTTP_OK !== $response->code) {
+            throw new InstagramException('Response code is ' . $response->code . '. Body: ' . static::getErrorBody($response->body) . ' Something went wrong. Please report issue.', $response->code);
+        }
+
+        $arr = $this->decodeRawBodyToJson($response->raw_body);
+
+        if (!is_array($arr)) {
+            throw new InstagramException('Response code is ' . $response->code . '. Body: ' . static::getErrorBody($response->body) . ' Something went wrong. Please report issue.', $response->code);
+        }
+
+        $likers = [];
+
+        foreach ($arr['users'] AS $user) {
+            $likers[] = Account::create($user);
+        }
+
+        return $likers;
     }
 
     /**

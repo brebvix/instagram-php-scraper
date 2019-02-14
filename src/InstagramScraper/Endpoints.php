@@ -11,6 +11,7 @@ class Endpoints
     const ACCOUNT_MEDIAS = 'https://www.instagram.com/graphql/query/?query_hash=42323d64886122307be10013ad2dcc44&variables={variables}';
     const ACCOUNT_JSON_INFO = 'https://www.instagram.com/{username}/?__a=1';
     const MEDIA_JSON_INFO = 'https://www.instagram.com/p/{code}/?__a=1';
+    const MEDIA_LIKERS_JSON_INFO = 'https://i.instagram.com/api/v1/media/{mediaId}/likers/';
     const MEDIA_JSON_BY_LOCATION_ID = 'https://www.instagram.com/explore/locations/{{facebookLocationId}}/?__a=1&max_id={{maxId}}';
     const MEDIA_JSON_BY_TAG = 'https://www.instagram.com/explore/tags/{tag}/?__a=1&max_id={max_id}';
     const GENERAL_SEARCH = 'https://www.instagram.com/web/search/topsearch/?query={query}';
@@ -140,6 +141,15 @@ class Endpoints
     {
         $url = str_replace('{tag}', urlencode($tag), static::MEDIA_JSON_BY_TAG);
         return str_replace('{max_id}', urlencode($maxId), $url);
+    }
+
+    /**
+     * @param string $mediaId
+     * @return string
+     */
+    public static function getMediaLikersJsonLink(string $mediaId): string
+    {
+        return str_replace('{mediaId}', urlencode($mediaId), static::MEDIA_LIKERS_JSON_INFO);
     }
 
     /**
