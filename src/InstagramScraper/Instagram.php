@@ -601,14 +601,19 @@ class Instagram
     /**
      * @param string $username
      * @param string $maxId
+     * @param bool $accountId
      *
      * @return array
      * @throws InstagramException
      * @throws InstagramNotFoundException
      */
-    public function getPaginateMedias(string $username, string $maxId = ''): array
+    public function getPaginateMedias(string $username, string $maxId = '', $accountId = false): array
     {
-        $account = $this->getAccount($username);
+        if (!$accountId) {
+            $account = $this->getAccount($username);
+            $accountId = $account->getId();
+        }
+
         $hasNextPage = true;
         $medias = [];
 
@@ -616,10 +621,11 @@ class Instagram
             'medias' => $medias,
             'maxId' => $maxId,
             'hasNextPage' => $hasNextPage,
+            'accountId' => $accountId,
         ];
 
         $variables = json_encode([
-            'id' => (string)$account->getId(),
+            'id' => (string)$accountId,
             'first' => (string)Endpoints::getAccountMediasRequestCount(),
             'after' => (string)$maxId
         ]);
@@ -659,6 +665,7 @@ class Instagram
             'medias' => $medias,
             'maxId' => $maxId,
             'hasNextPage' => $hasNextPage,
+            'accountId' => $accountId
         ];
 
         return $toReturn;
