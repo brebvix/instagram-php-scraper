@@ -5,10 +5,11 @@ require __DIR__ . '/../vendor/autoload.php';
 $instagram = new \InstagramScraper\Instagram();
 
 // If account is private and you subscribed to it, first login
-$instagram = \InstagramScraper\Instagram::withCredentials('username', 'password', '/path/to/cache/folder');
-$instagram->login();
+$instagram = new \InstagramScraper\Instagram();
 
-$media = $instagram->getMediaByUrl('https://www.instagram.com/p/BHaRdodBouH');
+$media = $instagram->getMediaByUrl('https://www.instagram.com/p/BLY9dixD3_s/');
+var_dump($media->getCommentsDisabled());
+exit();
 echo "Media info:\n";
 echo "Id: {$media->getId()}\n";
 echo "Shortcode: {$media->getShortCode()}\n";

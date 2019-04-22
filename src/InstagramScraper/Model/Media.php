@@ -143,6 +143,11 @@ class Media extends AbstractModel
     /**
      * @var bool
      */
+    protected $commentsDisabled = false;
+
+    /**
+     * @var bool
+     */
     protected $hasMoreComments = false;
 
     /**
@@ -393,6 +398,14 @@ class Media extends AbstractModel
     }
 
     /**
+     * @return bool
+     */
+    public function getCommentsDisabled(): bool
+    {
+        return $this->commentsDisabled;
+    }
+
+    /**
      * @return Comment[]
      */
     public function getComments(): array
@@ -460,6 +473,9 @@ class Media extends AbstractModel
                 break;
             case 'comments':
                 $this->commentsCount = $arr[$prop]['count'];
+                break;
+            case 'comments_disabled':;
+                $this->commentsDisabled = $arr[$prop];
                 break;
             case 'likes':
                 $this->likesCount = $arr[$prop]['count'];
