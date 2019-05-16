@@ -187,9 +187,9 @@ class Account extends AbstractModel
     }
 
     /**
-     * @return int
+     * @return int|string
      */
-    public function getId(): int
+    public function getId()
     {
         if (PHP_INT_SIZE > 4) {
             $this->id = (int)$this->id;
