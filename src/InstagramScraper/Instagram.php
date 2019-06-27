@@ -1212,6 +1212,25 @@ class Instagram
     }
 
     /**
+     * @return mixed|string
+     * @throws InstagramException
+     */
+    public static function getNewCsrfToken()
+    {
+        $response = Request::get(Endpoints::BASE_URL);
+        if ($response->code !== static::HTTP_OK) {
+            throw new InstagramException('Response code is ' . $response->code . '. Body: ' . static::getErrorBody($response->body) . ' Something went wrong. Please report issue.', $response->code);
+        }
+        preg_match('/"csrf_token":"(.*?)"/', $response->body, $match);
+
+        if (isset($match[1])) {
+            return $match[1];
+        }
+
+        return '';
+    }
+
+    /**
      * @param bool $force
      * @param bool|TwoStepVerificationInterface $twoStepVerificator
      *
